@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bug demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #demo {
+        border: 1px solid black;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1em;
+        width: 6em;
+        height: 7em;
+      }
+      .big-font {
+        font-size: 2em;
+      }
+      p {
+        width: 15em;
+      }
+      .slider-container {
+        width: 10em;
+        font-family: sans-serif;
+      }
+      .slider {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body style="padding-left: 1em; padding-top: 1em">
+    <p>
+      Increase the width using the slider until "big" is at the
+      <em>start</em> of the second line.
+    </p>
+    <br />
+    <p>
+      Notice how the height of the first line changes, as if "big" were on the
+      first line.
+    </p>
+    <br />
+    <div id="demo">
+      <span>small small small</span>
+      <span class="big-font"> big </span>
+      <span>small small small</span>
+    </div>
+    <br />
+    <div class="slider-container">
+      <label for="text-width">Width: <span id="output">6</span></label>
+      <input
+        type="range"
+        id="text-width"
+        name="text-width"
+        min="6"
+        max="12"
+        value="6"
+        step="1"
+        class="slider"
+      />
+    </div>
+
+    <script>
+      const slider = document.getElementById("text-width");
+      const output = document.getElementById("output");
+      const demo = document.getElementById("demo");
+
+      // Update the current slider value in real time
+      slider.addEventListener("input", function () {
+        output.textContent = this.value;
+        demo.style.width = this.value + "em";
+      });
+    </script>
+  </body>
+</html>
